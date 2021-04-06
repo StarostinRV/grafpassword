@@ -92,6 +92,38 @@ namespace grafpassword
             }
         }
 
+        void DrawModel(Graphics g)
+        {
+            SolidBrush brush_r = new SolidBrush(Color.Black);
+            SolidBrush brush_R = new SolidBrush(Color.Green);
+            for (int i = 0; i < _dimension_matrix * _dimension_matrix; i++)
+            {
+                Point loc_r = new Point(_nodes[i].Location.X - Node_r / 2, _nodes[i].Location.Y - Node_r / 2);
+                Point loc_R = new Point(_nodes[i].Location.X - Node_R / 2, _nodes[i].Location.Y - Node_R / 2);
+                g.FillEllipse(brush_r, loc_r.X, loc_r.Y, Node_r, Node_r);
+                if (_nodes[i].Аctive) g.DrawEllipse(new Pen(brush_R), loc_R.X, loc_R.Y, Node_R, Node_R);
+            }
+        }
+
+        void DrawGraf(Graphics g)
+        {
+            for (int i = 0; i < _dimension_matrix * _dimension_matrix; i++)
+                for (int j = i + 1; j < _dimension_matrix * _dimension_matrix; j++)
+                    if (_grafmodel[i, j] == 1) g.DrawLine(new Pen(Color.Black), _nodes[i].Location, _nodes[j].Location);
+
+        }
+
+        void Drawline(Graphics g)
+        {
+            g.DrawLine(new Pen(Color.Black), _nodes[_now_index].Location, _form1.MouseLocation);
+        }
+
+        public void Show(Graphics g)
+        {
+            DrawModel(g);
+            DrawGraf(g);
+            if (!_finish) Drawline(g);
+        }
 
 
         void AcceptChanges()
@@ -159,7 +191,6 @@ namespace grafpassword
             if (!_form1.IsMouseDown)
             {
                 _finish = true;
-                //MessageBox.Show(password);
             }
         }
 

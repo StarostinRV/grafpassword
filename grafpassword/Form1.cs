@@ -46,27 +46,29 @@ namespace grafpassword
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
-
+            is_mouse_down = false;
+            mouse_location = e.Location;
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
-
+            if (e.Button == MouseButtons.Left) is_mouse_down = true;
+            mouse_location = e.Location;
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
-
+            mouse_location = e.Location;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            this.Refresh();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-
+            GP1.Show(e.Graphics);
         }
     }
 }
