@@ -52,7 +52,7 @@ namespace grafpassword
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left) is_mouse_down = true;
+            is_mouse_down = true;
             mouse_location = e.Location;
         }
 
