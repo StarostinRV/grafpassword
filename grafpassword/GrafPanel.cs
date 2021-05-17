@@ -135,7 +135,7 @@ namespace grafpassword
         {
             int index = _dimension_matrix*_dimension_matrix;
             for (int i = 0; i < _dimension_matrix * _dimension_matrix; i++)
-            {
+            { 
                 int X = _nodes[i].Location.X - _form1.MouseLocation.X;
                 int Y = _nodes[i].Location.Y - _form1.MouseLocation.Y;
                 if ((X * X + Y * Y) <= (Node.r * Node.r)) index = i;
