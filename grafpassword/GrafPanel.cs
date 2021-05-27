@@ -23,6 +23,20 @@ namespace grafpassword
         Size _size;
         int[,] _grafmodel;
 
+        public string GetPassword()
+        {
+            return _password;
+        }
+
+        public int[,] GetGrafModel()
+        {
+            return _grafmodel;
+        }
+
+        public delegate void MethodContainer();
+
+        public event MethodContainer IsInputfinish;
+
         public Point Location
         {
             get
@@ -224,7 +238,14 @@ namespace grafpassword
             if (!_form1.IsMouseDown && !_finish)
             {
                 _finish = true;
-                MessageBox.Show(_password);
+                try
+                {
+                    IsInputfinish();
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
         }
 

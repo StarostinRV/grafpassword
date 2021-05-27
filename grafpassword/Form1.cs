@@ -42,6 +42,13 @@ namespace grafpassword
         {
             this.DoubleBuffered = true;
             GP1 = new GrafPanel(this);
+            GP1.IsInputfinish += GP1_IsInputfinish;
+
+        }
+
+        private void GP1_IsInputfinish()
+        {
+            MessageBox.Show("vvc");
         }
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
